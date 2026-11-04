@@ -1,0 +1,9 @@
+# Captured Teams data and HAR exports contain personal data and tokens.
+data/
+samples/
+*.har
+.env
+
+__pycache__/
+.venv/
+node_modules/

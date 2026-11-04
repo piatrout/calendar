@@ -1,0 +1,10 @@
+{
+  "name": "teams-collector",
+  "private": true,
+  "scripts": {
+    "lint": "eslint extension",
+    "format": "prettier --write extension tests/extension",
+    "format:check": "prettier --check extension tests/extension",
+    "test": "node --test tests/extension/*.test.mjs"
+  }
+}

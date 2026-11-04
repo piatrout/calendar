@@ -1,0 +1,30 @@
+{
+  "manifest_version": 3,
+  "name": "Teams Collector",
+  "version": "0.1.0",
+  "description": "Saves selected Teams responses to a local service on this computer.",
+  "permissions": ["storage", "unlimitedStorage", "alarms"],
+  "host_permissions": ["http://127.0.0.1:8765/*"],
+  "background": {
+    "service_worker": "background.js",
+    "scripts": ["background.js"]
+  },
+  "content_scripts": [
+    {
+      "matches": ["https://teams.microsoft.com/*", "https://teams.cloud.microsoft/*"],
+      "js": ["hook.js"],
+      "run_at": "document_start",
+      "all_frames": true,
+      "world": "MAIN"
+    },
+    {
+      "matches": ["https://teams.microsoft.com/*", "https://teams.cloud.microsoft/*"],
+      "js": ["bridge.js"],
+      "run_at": "document_start",
+      "all_frames": true
+    }
+  ],
+  "browser_specific_settings": {
+    "gecko": { "id": "teams-collector@local", "strict_min_version": "128.0" }
+  }
+}

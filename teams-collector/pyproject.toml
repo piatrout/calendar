@@ -1,0 +1,26 @@
+[project]
+name = "teams-collector"
+version = "0.1.0"
+description = "Local receiver and HAR tooling for the Teams calendar assistant"
+requires-python = ">=3.10"
+
+[tool.ruff]
+line-length = 100
+target-version = "py310"
+src = ["src", "tests"]
+
+[tool.ruff.lint]
+# Rules from CODING_RULES.md: naming (N), builtins shadowing (A), bare/blind except
+# (E722, BLE), print instead of logger (T20), complexity (C90), parameter count (PLR).
+select = ["E", "F", "W", "I", "N", "B", "A", "UP", "SIM", "RET", "C90", "PLR", "T20", "BLE"]
+
+[tool.ruff.lint.mccabe]
+max-complexity = 8
+
+[tool.ruff.lint.pylint]
+max-args = 4
+max-statements = 25
+
+[tool.ruff.lint.per-file-ignores]
+# Tests compare against literal HTTP codes and counts on purpose.
+"tests/**" = ["PLR2004"]
